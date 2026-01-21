@@ -1,86 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Anime Fighting Simulator Endless - Discord</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
-            color: white;
-            text-align: center;
-        }
-        header {
-            padding: 40px 20px;
-        }
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        p {
-            font-size: 1.1em;
-            max-width: 800px;
-            margin: auto;
-            line-height: 1.6;
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 15px 30px;
-            background: #5865F2;
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            border-radius: 10px;
-        }
-        .btn:hover {
-            background: #4752c4;
-        }
-        .images {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 40px 20px;
-        }
-        .images img {
-            width: 220px;
-            border-radius: 15px;
-        }
-        footer {
-            padding: 20x;
-            font-size: 0.9em;
-            opacity: 0.7;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Anime Fighting Simulator Endless</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #0f0f1a, #1a1a2e);
+    color: white;
+    text-align: center;
+}
+
+/* ===== ANIMACIONES ANIME ===== */
+@keyframes animeFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 10px #9333ea; }
+    50% { box-shadow: 0 0 30px #f43f5e; }
+    100% { box-shadow: 0 0 10px #9333ea; }
+}
+
+header, section {
+    animation: animeFade 1.2s ease;
+}
+
+/* ===== HEADER ===== */
+header {
+    padding: 50px 20px;
+}
+
+h1 {
+    font-size: 2.8em;
+}
+
+p {
+    max-width: 900px;
+    margin: auto;
+    font-size: 1.1em;
+}
+
+/* ===== BOTONES ===== */
+.btn {
+    display: inline-block;
+    margin: 20px;
+    padding: 16px 38px;
+    background: linear-gradient(135deg, #5865F2, #9333ea);
+    color: white;
+    text-decoration: none;
+    border-radius: 15px;
+    font-size: 1.1em;
+    animation: glow 2.5s infinite;
+    cursor: pointer;
+    border: none;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+}
+
+/* ===== GALERÍA ===== */
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px 20px;
+}
+
+.images img {
+    width: 220px;
+    border-radius: 18px;
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.images img:hover {
+    transform: scale(1.08) translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* ===== ZONAS ===== */
+.zones {
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.zone {
+    background: rgba(255,255,255,0.06);
+    border-radius: 14px;
+    padding: 15px 20px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.multi {
+    color: #4ade80;
+    font-weight: bold;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    padding: 30px;
+    opacity: 0.7;
+}
+</style>
 </head>
+
 <body>
 
 <header>
-    <h1>Anime Fighting Simulator Endless</h1>
-    <p>
-        Bienvenido a la comunidad oficial en Discord de Anime Fighting Simulator Endless.
-        Somos una comunidad <b>paniblante</b> dedicada a ayudar, compartir guías, códigos,
-        actualizaciones y todo sobre el juego.
-    </p>
+<h1>Anime Fighting Simulator Endless</h1>
+<p>
+Comunidad <b>hispanohablante</b> de Anime Fighting Simulator Endless.
+Guías, zonas, multiplicadores y power-ups 🔥
+</p>
 
-    <a class="btn" href="https://discord.gg/GjbSJ2Sb" target="_blank">
-        Únete a nuestro Discord
-    </a>
+<a class="btn" href="https://discord.gg/GjbSJ2Sb" target="_blank">
+Únete al Discord
+</a>
+
+<br>
+
+<button class="btn" onclick="toggleMusic()">
+🎵 Música de batalla
+</button>
 </header>
 
+<!-- ===== AUDIO (NO COPYRIGHT, ESTILO ANIME BATTLE) ===== -->
+<audio id="battleMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b0e7d3c30.mp3" type="audio/mpeg">
+</audio>
+
 <section class="images">
-    <img src="https://i.imgur.com/8Qf0KQK.jpg" alt="Naruto">
-    <img src="https://i.imgur.com/jn0G8dK.jpg" alt="Goku">
-    <img src="https://i.imgur.com/9XqP3xQ.jpg" alt="Solo Leveling">
-    <img src="https://i.imgur.com/4Z7Z7ZQ.jpg" alt="Anime">
+<img src="https://i.imgur.com/8Qf0KQK.jpg" alt="Naruto">
+<img src="https://i.imgur.com/jn0G8dK.jpg" alt="Goku">
+<img src="https://i.imgur.com/9XqP3xQ.jpg" alt="Solo Leveling">
+<img src="https://i.imgur.com/2yaf2wb.jpg" alt="Luffy">
+</section>
+
+<section class="zones">
+<h2>Training Area Multipliers</h2>
+
+<div class="zone"><span>100</span><span class="multi">x5</span></div>
+<div class="zone"><span>10k</span><span class="multi">x15</span></div>
+<div class="zone"><span>100k</span><span class="multi">x50</span></div>
+<div class="zone"><span>1m</span><span class="multi">x100</span></div>
+<div class="zone"><span>10m</span><span class="multi">x500</span></div>
+<div class="zone"><span>100m</span><span class="multi">x1 000</span></div>
+<div class="zone"><span>1b</span><span class="multi">x5 000</span></div>
+<div class="zone"><span>100b</span><span class="multi">x10 000</span></div>
+<div class="zone"><span>5t</span><span class="multi">x25 000</span></div>
+<div class="zone"><span>250t</span><span class="multi">x100 000</span></div>
+<div class="zone"><span>75qd</span><span class="multi">x250 000</span></div>
+<div class="zone"><span>2.5qn</span><span class="multi">x500 000</span></div>
+<div class="zone"><span>1sx</span><span class="multi">x1 500 000</span></div>
+<div class="zone"><span>10sx</span><span class="multi">x5 000 000</span></div>
+
 </section>
 
 <footer>
-    © 2026 Anime Fighting Simulator Endless | Comunidad Discord
+© 2026 Anime Fighting Simulator Endless | Discord Hispano
 </footer>
+
+<script>
+const music = document.getElementById("battleMusic");
+let playing = false;
+
+function toggleMusic() {
+    if (!playing) {
+        music.play();
+        playing = true;
+    } else {
+        music.pause();
+        playing = false;
+    }
+}
+</script>
 
 </body>
 </html>
